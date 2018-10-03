@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.regex.Pattern;
 public class Web {
 	private String nombre;
 	private Integer indice;
 	private ArrayList<Enlace> listaEnlaces;
 	private ArrayList<String> listaPalabras;
-	public Web(String pNombre,Integer pIndice) {
+	public Web(String pNombre, int pIndice) {
 		this.nombre=pNombre;
 		this.indice=pIndice;
 		this.listaEnlaces= new ArrayList<Enlace>();
@@ -12,8 +14,51 @@ public class Web {
 	}
 	
 	public void anadirEnlaces(ArrayList<Enlace> pLista) {
-		this.listaEnlaces=pLista;
+		Iterator<Enlace> itr= pLista.iterator();
+		Enlace enlace=new Enlace(4);
+		while(itr.hasNext()) {
+			enlace=itr.next();
+			this.listaEnlaces.add(enlace);
+			
+		}
 		
+	}
+	public ArrayList<Enlace> getEnlaces() {
+		return this.listaEnlaces;
+		
+	}
+	
+//	public ArrayList<String> getWebs(){
+//		Iterator<Enlace> itr= this.listaEnlaces.iterator();
+//		Enlace enlaceAct=new Enlace(3);
+//		
+//		while (itr.hasNext()) {
+//			enlaceAct=itr.next();
+//			
+//			
+//		}
+//		
+//	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	public String getWeb() {
+		return this.nombre;
+	}
+	
+	public int getIndice() {
+		return this.indice;
+	}
+	public void anadirPalabras() {
+		Diccionario diccionario= Diccionario.getDiccionario();
+		diccionario.esta(this.nombre);
+		System.out.println(diccionario.esta(this.nombre));
+	}
+	
+	public String limpiarNombreWeb() {
+		String[] pSeparada= this.nombre.split(Pattern.quote("."));
+		return pSeparada[0];
 	}
 
 }
