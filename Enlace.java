@@ -7,6 +7,8 @@ public class Enlace {
 	}
 
 	public Integer getNombre() {
+		//Pre
+		//Post: devuelve el valor del entero contenido en el enlace.
 		return this.posicion;
 	}
 }

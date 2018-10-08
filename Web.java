@@ -14,16 +14,21 @@ public class Web {
 	}
 	
 	public void anadirEnlaces(ArrayList<Enlace> pLista) {
-		Iterator<Enlace> itr= pLista.iterator();
-		Enlace enlace=new Enlace(4);
-		while(itr.hasNext()) {
-			enlace=itr.next();
-			this.listaEnlaces.add(enlace);
+		//Pre
+		//Post añade los enlaces de la lista dada a la web.
+		this.listaEnlaces=pLista;
+//		Iterator<Enlace> itr= pLista.iterator();
+//		Enlace enlace=new Enlace(4);
+//		while(itr.hasNext()) {
+//			enlace=itr.next();
+//			this.listaEnlaces.add(enlace);
 			
-		}
+//		}
 		
 	}
 	public ArrayList<Enlace> getEnlaces() {
+		//Pre
+		//Post devuelve los enlaces de la web.
 		return this.listaEnlaces;
 		
 	}
@@ -48,17 +53,19 @@ public class Web {
 	}
 	
 	public int getIndice() {
+		//Pre
+		//Post devuelve el indice de la web.
 		return this.indice;
 	}
-	public void anadirPalabras() {
-		Diccionario diccionario= Diccionario.getDiccionario();
-		diccionario.esta(this.nombre);
-		System.out.println(diccionario.esta(this.nombre));
-	}
+//	public void anadirPalabras() {
+//		Diccionario diccionario= Diccionario.getDiccionario();
+//		diccionario.esta(this.nombre);
+//		System.out.println(diccionario.esta(this.nombre));
+//	}
 	
-	public String limpiarNombreWeb() {
-		String[] pSeparada= this.nombre.split(Pattern.quote("."));
-		return pSeparada[0];
-	}
+//	public String limpiarNombreWeb() {
+//		String[] pSeparada= this.nombre.split(Pattern.quote("."));
+//		return pSeparada[0];
+//	}
 
 }
