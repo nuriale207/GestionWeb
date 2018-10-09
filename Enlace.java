@@ -6,7 +6,7 @@ public class Enlace {
 		this.posicion=pPosicion;
 	}
 
-	public Integer getNombre() {
+	public int getEnlace() {
 		//Pre
 		//Post: devuelve el valor del entero contenido en el enlace.
 		return this.posicion;

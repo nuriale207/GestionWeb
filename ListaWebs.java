@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 public class ListaWebs {
 	private ArrayList<Web> lista;
@@ -102,7 +106,7 @@ public class ListaWebs {
 		Web webAct=  new Web("wew",8); 
 		while(itr.hasNext()) {
 			webAct=itr.next();			
-			System.out.println(webAct.getWeb());}
+			System.out.println(webAct.getNombre());}
 	}
 	
 	public String id2String(int pId) {
@@ -180,7 +184,9 @@ public class ListaWebs {
 	
 	public ListaWebs webOrdenada() {
 		//Pre:
-		//Post: devuelve una ListaWebs cuyos elementos están ordenados, esta lista solo se utiliza internamente.
+		/*Post: devuelve una ListaWebs cuyos elementos están ordenados, esta lista solo se utiliza internamente.
+		 * Es un método público para poder realizar las pruebas.
+		 */
 		Iterator<Web> itr=getIterador();
 		Web webAct=null;
 		ListaWebs listaAux= new ListaWebs();
@@ -276,7 +282,7 @@ public class ListaWebs {
 		ArrayList<String> websEnlazadas=new ArrayList<String>();
 		Iterator<Enlace> itr= enlaces.iterator();
 		while(itr.hasNext()) {
-			int idAct=itr.next().getNombre();
+			int idAct=itr.next().getEnlace();
 			websEnlazadas.add(id2String(idAct));
 		}
 		return websEnlazadas;
@@ -306,9 +312,9 @@ public class ListaWebs {
 		//Post: devuelve las palabras de 3 o más letras que están en el nombre de la web.
 			// en caso de no haber ninguna devuelve una lista vacía.
 		ArrayList<String> lista= new ArrayList<String>();
-		int primero=0;
-		int ultimo=3;
-		int numLetras=3;
+		int primero=0;//este indice marca el principio de la secuencia de caracteres que se va a comparar con el diccionario
+		int ultimo=3;//este indice marca el final de la secuencia de caracteres que se va a comparar con el diccionario
+		int numLetras=3;//este indice marca el numero de caracteres que tiene el string que se va a comparar con el diccionario
 	
 		while(numLetras<=w.length()-1){
 			while(ultimo<w.length()-1 && primero<w.length()-1){
@@ -327,8 +333,61 @@ public class ListaWebs {
 		return lista;
 	}
 	
-	public void guardarWebs(String pFichero){
+	public void guardarWebs(String pFicheroWebs, String pFicheroEnlaces) {
 		
-	}
+		/*
+		 * Pre: Los nombres de los ficheros van seguidos de .txt.
+		 * Post: Guarda la lista de webs en el fichero cuyo nombre es pFicheroWebs y la lista de enlaces
+		 * en el fichero pFicheroEnlaces. En caso de que el fichero con el nombre ya exista escribe por
+		 * pantalla un mensaje de error.
+		 */
+		File ficheroWebs=new File(pFicheroWebs);
+		File ficheroEnlaces=new File(pFicheroEnlaces);
+		if(ficheroWebs.exists()){
+			System.out.println("El fichero de webs ya existe con ese nombre");
+		}
+		if(ficheroEnlaces.exists()){
+			System.out.println("El fichero de enlaces ya existe con ese nombre");
+		}
+		FileWriter webs = null;
+		FileWriter enlaces=null;
+        PrintWriter pw = null;
+        PrintWriter pe=null;
+        try
+        {
+            webs = new FileWriter(pFicheroWebs);
+            enlaces=new FileWriter(pFicheroEnlaces);
+            pw = new PrintWriter(webs);
+            pe=new PrintWriter(enlaces);
+
+            Iterator<Web>itr=getIterador();
+			while(itr.hasNext()){
+				Web webAct=itr.next();
+				ArrayList<Enlace> listAct=webAct.getEnlaces();
+				
+				pw.println(webAct.getNombre()+" "+webAct.getIndice());
+				pe.print(webAct.getIndice()+"-->");
+				Iterator<Enlace> itr2=listAct.iterator();
+				while(itr2.hasNext()){
+					Enlace enlaceAct= itr2.next();
+					pe.print(enlaceAct.getEnlace()+" ");
+		
+				}
+				pe.println("");
+			}
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != webs)
+              webs.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    }
+	
 }
 

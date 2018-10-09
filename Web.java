@@ -2,15 +2,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 public class Web {
+	/*El tipo primitivo int no es una clase y por tanto no es heredera de la clase objeto por lo que 
+	 * no se puede tratar como un objeto y crear un ArrayList. Podríamos haber utilizado la clase integer
+	 * pero en nuestro caso hemos creado la clase Enlace en la que se almacena un int.
+	*/
 	private String nombre;
 	private Integer indice;
 	private ArrayList<Enlace> listaEnlaces;
-	private ArrayList<String> listaPalabras;
 	public Web(String pNombre, int pIndice) {
 		this.nombre=pNombre;
 		this.indice=pIndice;
 		this.listaEnlaces= new ArrayList<Enlace>();
-		this.listaPalabras=new ArrayList<String>();
+		
 	}
 	
 	public void anadirEnlaces(ArrayList<Enlace> pLista) {
@@ -48,10 +51,7 @@ public class Web {
 	public String getNombre() {
 		return this.nombre;
 	}
-	public String getWeb() {
-		return this.nombre;
-	}
-	
+
 	public int getIndice() {
 		//Pre
 		//Post devuelve el indice de la web.

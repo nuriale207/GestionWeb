@@ -57,16 +57,16 @@ public class Diccionario {
 				palabra= this.diccionario.get(centro);
 				
 				
-				if(palabra.compareTo(s)>0) {
+				if(palabra.compareToIgnoreCase(s)>0) {
 			
 					f=centro-1;
 					
 				}
-				else if(palabra.compareTo(s)<0) {
+				else if(palabra.compareToIgnoreCase(s)<0) {
 
 					i=centro+1;	
 				}
-				else if(palabra.equals(s)) {
+				else if(palabra.compareToIgnoreCase(s)==0) {
 					//Web web=new Web(webCen);				
 					//indice=web.getIndice();
 					salir=true;
