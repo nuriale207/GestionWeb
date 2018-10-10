@@ -345,9 +345,11 @@ public class ListaWebs {
 		File ficheroEnlaces=new File(pFicheroEnlaces);
 		if(ficheroWebs.exists()){
 			System.out.println("El fichero de webs ya existe con ese nombre");
+			return;
 		}
 		if(ficheroEnlaces.exists()){
 			System.out.println("El fichero de enlaces ya existe con ese nombre");
+			return;
 		}
 		FileWriter webs = null;
 		FileWriter enlaces=null;
@@ -379,8 +381,6 @@ public class ListaWebs {
             e.printStackTrace();
         } finally {
            try {
-           // Nuevamente aprovechamos el finally para 
-           // asegurarnos que se cierra el fichero.
            if (null != webs)
               webs.close();
            } catch (Exception e2) {

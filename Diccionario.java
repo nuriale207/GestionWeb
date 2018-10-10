@@ -73,10 +73,7 @@ public class Diccionario {
 		
 				}
 			}
-//			if(!salir) {
-//				System.out.println("El elemento no ha aparecido");
-//				palabra=new String("noEstaEnElDiccionario");
-//			}
+
 			return salir;
 		}
 	
@@ -86,7 +83,7 @@ public class Diccionario {
 		//Post:añade la palabra pPalabra al final del diccionario .
 		if(!esta(pPalabra)){
 		this.diccionario.add(pPalabra);
-		//diccionarioOrdenado();
+		
 		}
 		
 	}
