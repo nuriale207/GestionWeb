@@ -43,7 +43,7 @@ public class Diccionario {
 	public boolean esta(String s){	
 		//Pre: el diccionario debe tener al menos un elemento.
 		//Post: devuelve true si el elemento  s está en el diccionario y false en el caso contrario.
-			diccionarioOrdenado();
+			
 			int i=0;
 			int f=this.diccionario.size()-1;
 			int centro=0;
@@ -81,10 +81,10 @@ public class Diccionario {
 	public void anadirPalabra(String pPalabra) {
 		//Pre:
 		//Post:añade la palabra pPalabra al final del diccionario .
-		if(!esta(pPalabra)){
+		
 		this.diccionario.add(pPalabra);
 		
-		}
+		
 		
 	}
 	
@@ -94,20 +94,7 @@ public class Diccionario {
 		return miDiccionario;
 	}
 	
-//	public String esta(String pPalabra) {
-//		Iterator<String> itr=this.diccionario.iterator();
-//		Boolean igual=false;
-//		String palabraAct= new String();
-//		while(itr.hasNext()&& igual==false) {
-//			palabraAct=itr.next();
-//			
-//			if(pPalabra.contains(palabraAct)) {
-//				igual=true;
-//			}
-//			
-//		}
-//		return palabraAct;
-//	}
+
 	public void diccionarioOrdenado(){
 		//Pre:el diccionario contiene al menos un elemento
 		//Post: ordena el diccionario alfabeticamente

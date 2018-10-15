@@ -308,14 +308,15 @@ public class ListaWebs {
 	}
 	
 	public ArrayList<String> web2Words(String w){
-		//Pre: la web indicada está en la lista de webs
-		//Post: devuelve las palabras de 3 o más letras que están en el nombre de la web.
-			// en caso de no haber ninguna devuelve una lista vacía.
+//		Pre: la web indicada está en la lista de webs
+//		Post: devuelve las palabras de 3 o más letras que están en el nombre de la web.
+//			 en caso de no haber ninguna devuelve una lista vacía.
+		
 		ArrayList<String> lista= new ArrayList<String>();
 		int primero=0;//este indice marca el principio de la secuencia de caracteres que se va a comparar con el diccionario
 		int ultimo=3;//este indice marca el final de la secuencia de caracteres que se va a comparar con el diccionario
 		int numLetras=3;//este indice marca el numero de caracteres que tiene el string que se va a comparar con el diccionario
-	
+		Diccionario.getDiccionario().diccionarioOrdenado();
 		while(numLetras<=w.length()-1){
 			while(ultimo<w.length()-1 && primero<w.length()-1){
 				
@@ -331,6 +332,8 @@ public class ListaWebs {
 			ultimo=numLetras;
 		}
 		return lista;
+
+
 	}
 	
 	public void guardarWebs(String pFicheroWebs, String pFicheroEnlaces) {

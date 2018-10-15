@@ -183,7 +183,7 @@ public class ListaWebsTest {
 		ListaWebs.getListaWebs().word2Webs("world");
 	}
 	@Test
-	public void testWebs2Words (){
+	public void testWeb2Words (){
 		
 		ListaWebs.getListaWebs().cargarLista("smallindex.txt", "smallpld-arcs-1-N.txt");
 		//la web no está en la lista
@@ -213,11 +213,15 @@ public class ListaWebsTest {
 		ListaWebs.getListaWebs().cargarLista("index.txt", "pld-arcs-1-N.txt");
 		//ListaWebs.getListaWebs().imprimir();
 		
+		ListaWebs.getListaWebs().webOrdenada();
 		System.out.println(ListaWebs.getListaWebs().enlacesSalientes("zzzwebhosting.com"));
-		System.out.println(ListaWebs.getListaWebs().string2Id("zzzwebhosting.com"));
-		System.out.println(ListaWebs.getListaWebs().string2Id("sfdasgasrgsg"));
-		
+		assertEquals(ListaWebs.getListaWebs().string2Id("zzzwebhosting.com"),2039803);
+		assertEquals(ListaWebs.getListaWebs().string2Id("sfdasgasrgsg"),-1);
+		assertEquals(ListaWebs.getListaWebs().id2String(2000000),"xmpzd.com");
 		System.out.println(ListaWebs.getListaWebs().word2Webs("world"));
+		
+		ListaWebs.getListaWebs().guardarWebs("listaLarga", "muchosEnlaces.txt");
+		//System.out.println(ListaWebs.getListaWebs().web2Words("zzzwebhosting.com"));
 		
 		
 	}

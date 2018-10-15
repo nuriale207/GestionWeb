@@ -24,6 +24,7 @@ public class DiccionarioTest {
 	@Test
 	public void testCargarDiccionario() {
 		Diccionario.getDiccionario().anadirPalabra("supercalifragilisticoespialidoso");
+		assertTrue(Diccionario.getDiccionario().esta("supercalifragilisticoespialidoso"));
 		Diccionario.getDiccionario().cargarDiccionario("words.txt");
 		Diccionario.getDiccionario().imprimir();
 		assertNotNull(Diccionario.getDiccionario());
@@ -32,9 +33,11 @@ public class DiccionarioTest {
 	@Test
 	public void testAñadirPalabra() {
 		Diccionario.getDiccionario().anadirPalabra(p1);
-		assertNotNull(Diccionario.getDiccionario());
+		assertTrue(Diccionario.getDiccionario().esta(p1));
 		Diccionario.getDiccionario().anadirPalabra(p2);
 		Diccionario.getDiccionario().anadirPalabra(p3);
+		assertTrue(Diccionario.getDiccionario().esta(p2));
+		assertTrue(Diccionario.getDiccionario().esta(p3));
 		Diccionario.getDiccionario().imprimir();
 	}
 
@@ -72,22 +75,25 @@ public class DiccionarioTest {
 		Diccionario.getDiccionario().imprimir();
 		
 		//Lista muy desordenada
-				Diccionario.getDiccionario().resetear();
-				Diccionario.getDiccionario().anadirPalabra(p5);
-				Diccionario.getDiccionario().anadirPalabra(p2);
-				Diccionario.getDiccionario().anadirPalabra(p1);
-				Diccionario.getDiccionario().anadirPalabra(p3);
-				Diccionario.getDiccionario().anadirPalabra(p4);
-				Diccionario.getDiccionario().diccionarioOrdenado();
-				Diccionario.getDiccionario().imprimir();
+		Diccionario.getDiccionario().resetear();
+		Diccionario.getDiccionario().anadirPalabra(p5);
+		Diccionario.getDiccionario().anadirPalabra(p2);
+		Diccionario.getDiccionario().anadirPalabra(p1);
+		Diccionario.getDiccionario().anadirPalabra(p3);
+		Diccionario.getDiccionario().anadirPalabra(p4);
+		Diccionario.getDiccionario().diccionarioOrdenado();
+		Diccionario.getDiccionario().imprimir();
 	}
 	
 	@Test
 	public void testEsta(){
+		//Diccionario vacío
 		assertFalse(Diccionario.getDiccionario().esta(p1));
 		Diccionario.getDiccionario().anadirPalabra(p1);
+		//1 elemento
 		assertFalse(Diccionario.getDiccionario().esta(p2));
 		assertTrue(Diccionario.getDiccionario().esta(p1));
+		//varios elementos
 		Diccionario.getDiccionario().anadirPalabra(p2);
 		Diccionario.getDiccionario().anadirPalabra(p3);
 		Diccionario.getDiccionario().anadirPalabra(p4);
@@ -96,7 +102,7 @@ public class DiccionarioTest {
 		
 		assertTrue(Diccionario.getDiccionario().esta("hola"));
 		assertFalse(Diccionario.getDiccionario().esta("orpt"));
-		
+		//muchos elementos
 		Diccionario.getDiccionario().resetear();
 		Diccionario.getDiccionario().cargarDiccionario("words.txt");		
 		Diccionario.getDiccionario().diccionarioOrdenado();

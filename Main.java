@@ -11,6 +11,8 @@ public class Main {
 		ListaWebs.getListaWebs().cargarLista("smallindex.txt", "smallpld-arcs-1-N.txt");
 		ListaWebs.getListaWebs().imprimir();
 		
+		Diccionario.getDiccionario().cargarDiccionario("words.txt");
+		System.out.println(ListaWebs.getListaWebs().web2Words("worldisawesome.com"));
 		
 		Diccionario diccionario=Diccionario.getDiccionario();
 		diccionario.cargarDiccionario("words.txt");
